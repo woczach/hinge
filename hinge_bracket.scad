@@ -14,9 +14,9 @@
 // =====================================================================
 
 /* [Wood] */
-wood_width  = 60;    // across the face the hinge mounts on
-wood_depth  = 40;    // thickness, away from that face
-clearance   = 0.4;   // slip-fit gap around the wood
+wood_width  = 49;    // across the face the hinge mounts on
+wood_depth  = 39;    // thickness, away from that face
+clearance   = 0.0;   // slip-fit gap around the wood
 
 /* [Bracket] */
 wall        = 4;     // wall thickness
@@ -34,7 +34,7 @@ center_d    = 12;    // central through hole
 
 /* [View] */
 part        = "assembly";  // [bracket, wood, assembly]
-show_wood   = true;
+show_wood   = false;
 
 $fn = 64;
 

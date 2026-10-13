@@ -10,13 +10,13 @@
 // =====================================================================
 
 /* [Wood] */
-wood_width  = 60;    // Y
-wood_depth  = 40;    // X
-clearance   = 0.4;   // slip-fit gap
+wood_width  = 39;    // Y
+wood_depth  = 49;    // X
+clearance   = 0;   // slip-fit gap
 
 /* [Cap] */
-wall        = 4;     // wall thickness
-cap_thick   = 6;     // end plate thickness
+wall        = 2;     // wall thickness
+cap_thick   = 2;     // end plate thickness
 body_len    = 60;    // how far the cap runs down the wood
 
 /* [Arm mounting]  (on the +X side wall) */
@@ -32,7 +32,7 @@ side_dy     = 30;
 
 /* [View] */
 part        = "assembly";  // [cap, wood, assembly]
-show_wood   = true;
+show_wood   = false;
 
 $fn = 64;
 
