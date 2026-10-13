@@ -23,12 +23,12 @@ body_len    = 60;    // how far the cap runs down the wood
 hole_dx     = 14;    // screw spacing across (Y)
 hole_dz     = 30;    // screw spacing along the wood (Z)
 hole_d      = 4.3;   // M4 clearance hole
-hole_center = 30;    // pattern centre, measured from the closed end
+hole_top    = 6;     // distance from the closed (top) end to the near holes
 
 /* [Locking] */
 side_screws = true;  // extra screws through the -X wall into the wood
 side_d      = 4;
-side_dy     = 30;
+side_dz     = 30;    // spacing of the back holes, stacked vertically (Z)
 
 /* [View] */
 part        = "assembly";  // [cap, wood, assembly]
@@ -62,17 +62,19 @@ module corner_cap() {
                   z_end_plate + 1], center = true);
 
         // 4 arm screw holes through the +X side wall
-        for (sy = [-1, 1], sz = [-1, 1])
+        //   top pair:  hole_top from the closed end
+        //   bottom pair: hole_dz further down
+        for (sy = [-1, 1], sz = [0, 1])
             translate([outer_x / 2,
                        sy * hole_dx / 2,
-                       (body_len - hole_center) + sz * hole_dz / 2])
+                       body_len - hole_top - sz * hole_dz])
                 rotate([0, 90, 0])
                     cylinder(d = hole_d, h = wall * 3, center = true);
 
-        // optional locking screws through the -X wall
+        // optional locking screws through the -X wall, stacked vertically
         if (side_screws)
-            for (sy = [-1, 1])
-                translate([-outer_x / 2, sy * side_dy / 2, body_len / 2])
+            for (sz = [-1, 1])
+                translate([-outer_x / 2, 0, body_len / 2 + sz * side_dz / 2])
                     rotate([0, 90, 0])
                         cylinder(d = side_d, h = wall + 15);
     }
