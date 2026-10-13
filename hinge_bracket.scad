@@ -19,7 +19,7 @@ wood_depth  = 39;    // thickness, away from that face
 clearance   = 0.0;   // slip-fit gap around the wood
 
 /* [Bracket] */
-wall        = 4;     // wall thickness
+wall        = 2;     // wall thickness
 length      = 86;    // along the wood (must cover the 76 plate)
 
 /* [Hinge mounting] */
@@ -29,7 +29,7 @@ hole_dx     = 30;    // screw spacing across the face
 hole_dz     = 62;    // screw spacing along the length
 hole_d      = 4.8;   // M4 clearance hole
 hub_d       = 32;    // central boss recess diameter
-hub_depth   = 3;     // boss recess depth
+hub_depth   = 5;     // boss recess depth
 center_d    = 12;    // central through hole
 
 /* [View] */
