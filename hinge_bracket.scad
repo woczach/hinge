@@ -19,7 +19,7 @@ wood_depth  = 39;    // thickness, away from that face
 clearance   = 0.0;   // slip-fit gap around the wood
 
 /* [Bracket] */
-wall        = 2;     // wall thickness
+wall        = 4;     // wall thickness
 length      = 86;    // along the wood (must cover the 76 plate)
 
 /* [Hinge mounting] */
