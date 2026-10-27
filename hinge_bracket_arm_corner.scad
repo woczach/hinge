@@ -10,8 +10,8 @@
 // =====================================================================
 
 /* [Wood] */
-wood_width  = 39;    // Y
-wood_depth  = 49;    // X
+wood_width  = 40;    // Y
+wood_depth  = 51;    // X
 clearance   = 0;   // slip-fit gap
 
 /* [Cap] */
@@ -19,9 +19,13 @@ wall        = 2;     // wall thickness
 cap_thick   = 2;     // end plate thickness
 body_len    = 60;    // how far the cap runs down the wood
 
+/* [Hinge relief]  (cap narrows so the hinge leaf slides over it) */
+hinge_w     = 41.5;  // leaf width; cap outer Y becomes this in the zone
+hinge_zone  = 30;    // zone from the closed (top) end where it narrows
+
 /* [Arm mounting]  (on the +X side wall) */
-hole_dx     = 14;    // screw spacing across (Y)
-hole_dz     = 30;    // screw spacing along the wood (Z)
+hole_dx     = 30;    // screw spacing across (Y)
+hole_dz     = 14;    // screw spacing along the wood (Z)
 hole_d      = 4.3;   // M4 clearance hole
 hole_top    = 6;     // distance from the closed (top) end to the near holes
 
@@ -39,6 +43,7 @@ $fn = 64;
 // ---------------------------------------------------------------------
 outer_x = wood_depth + 2 * wall;
 outer_y = wood_width + 2 * wall;
+relief_y = (outer_y - hinge_w) / 2;   // cut off each Y side in the hinge zone
 
 // z = 0 at the open bottom, z = body_len at the closed end face
 z_end_plate = body_len - cap_thick;
@@ -60,6 +65,14 @@ module corner_cap() {
             cube([wood_depth + clearance,
                   wood_width + clearance,
                   z_end_plate + 1], center = true);
+
+        // hinge relief: narrow the cap to hinge_w in the top hinge_zone
+        // so the (wider than the wood) hinge leaf slides over the end
+        for (sy = [-1, 1])
+            translate([-outer_x / 2 - 1,
+                       sy > 0 ? outer_y / 2 - relief_y : -outer_y / 2 - 1,
+                       body_len - hinge_zone])
+                cube([outer_x + 2, relief_y + 1, hinge_zone + 1]);
 
         // 4 arm screw holes through the +X side wall
         //   top pair:  hole_top from the closed end

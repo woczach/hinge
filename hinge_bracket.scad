@@ -14,8 +14,8 @@
 // =====================================================================
 
 /* [Wood] */
-wood_width  = 49;    // across the face the hinge mounts on
-wood_depth  = 39;    // thickness, away from that face
+wood_width  = 51;    // across the face the hinge mounts on
+wood_depth  = 41;    // thickness, away from that face
 clearance   = 0.0;   // slip-fit gap around the wood
 
 /* [Bracket] */
