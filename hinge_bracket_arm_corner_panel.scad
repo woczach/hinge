@@ -15,8 +15,8 @@
 // =====================================================================
 
 /* [Wood] */
-wood_width  = 40;    // Y
-wood_depth  = 51;    // X
+wood_width  = 51;    // Y
+wood_depth  = 40;    // X
 clearance   = 0;     // slip-fit gap
 
 /* [Cap] */
